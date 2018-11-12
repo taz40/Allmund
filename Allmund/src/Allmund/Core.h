@@ -7,5 +7,5 @@
 		#define ALLMUND_API __declspec(dllimport)
 	#endif
 #else
-	#error Allmunt only supports windows!
+	#error Allmund only supports windows!
 #endif

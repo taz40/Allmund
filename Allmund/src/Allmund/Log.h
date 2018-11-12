@@ -37,3 +37,8 @@ namespace Allmund {
 #define AM_WARN(...)  ::Allmund::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define AM_ERROR(...) ::Allmund::Log::GetClientLogger()->error(__VA_ARGS__)
 #define AM_FATAL(...) ::Allmund::Log::GetClientLogger()->critical(__VA_ARGS__)
+
+#ifdef AM_RELEASE_BUILD
+	#define AM_TRACE
+	#define AM_CORE_TRACE
+#endif

@@ -4,7 +4,7 @@ class Sandbox : public Allmund::Application {
 
 public:
 	Sandbox() {
-		
+		AM_TRACE("Sandbox initialized");
 	}
 
 	~Sandbox() {
