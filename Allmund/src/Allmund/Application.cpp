@@ -1,9 +1,13 @@
 #include "Application.h"
+#include "Log.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 namespace Allmund {
 
-	Application::Application()
+	Application::Application(int width, int height, const char * title)
 	{
+		window = new Window(width, height, title);
 	}
 
 
@@ -12,7 +16,8 @@ namespace Allmund {
 	}
 
 	void Application::Run() {
-		while (true) {
+		while (!window->IsClosing()) {
+			window->Update();
 		}
 	}
 

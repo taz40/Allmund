@@ -6,6 +6,7 @@
 	#else
 		#define ALLMUND_API __declspec(dllimport)
 	#endif
+	#define AM_DEFAULT_RENDER_API RenderAPI::DirectX
 #else
 	#error Allmund only supports windows!
 #endif

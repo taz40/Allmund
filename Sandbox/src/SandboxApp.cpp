@@ -3,7 +3,8 @@
 class Sandbox : public Allmund::Application {
 
 public:
-	Sandbox() {
+	Sandbox()
+	: Application(800, 600, "Test"){
 		AM_TRACE("Sandbox initialized");
 	}
 
