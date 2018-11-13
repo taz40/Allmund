@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Allmund\Graphics\Shader.h" />
     <ClInclude Include="src\Allmund\Engine.h" />
     <ClInclude Include="src\Allmund\Log.h" />
     <ClInclude Include="src\Allmund.h" />
@@ -21,6 +22,7 @@
     <ClInclude Include="src\Allmund\Graphics\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Allmund\Graphics\Shader.cpp" />
     <ClCompile Include="src\Allmund\Engine.cpp" />
     <ClCompile Include="src\Allmund\Log.cpp" />
     <ClCompile Include="src\Allmund\Application.cpp" />
@@ -97,6 +99,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>AM_RELEASE_BUILD;GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Allmund\vendor\spdlog\include;$(SolutionDir)Allmund\vendor\GLFW\include;$(SolutionDir)Allmund\vendor\GLEW\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

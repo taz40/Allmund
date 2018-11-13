@@ -31,6 +31,7 @@ namespace Allmund {
 				AM_CORE_FATAL("GLEW Failed to initialize. Error = {0}", glewGetErrorString(err));
 				return;
 			}
+			shader = new OPENGL::Shader("");
 		}
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);
@@ -45,8 +46,9 @@ namespace Allmund {
 	void Window::Update() {
 		if (Allmund::renderAPI == RenderAPI::OpenGL) {
 
-
-			VertexBuffer* buffer = new VertexBuffer(new float[6] {-0.5f, -0.5f, 0.0f, 0.5f, 0.5f, -0.5f});
+			OPENGL::Vertex verts[3] = { -0.5f, -0.5f, 0.0f, 0.5f, 0.5f, -0.5f };
+			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 3);
+			shader->Bind();
 			/* Render here */
 			glClear(GL_COLOR_BUFFER_BIT);
 

@@ -1,13 +1,19 @@
 #include "VertexBuffer.h"
+#include "../Log.h"
 #include <GL/glew.h>
+#include <stddef.h>
 
-namespace Allmund::Graphics {
+namespace Allmund::Graphics::OPENGL {
 
-	VertexBuffer::VertexBuffer(float data[])
+	VertexBuffer::VertexBuffer(Vertex* data, unsigned int count)
 	{
 		glGenBuffers(1, &buffer_id);
 		Bind();
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * count, data, GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+		Unbind();
 	}
 
 
