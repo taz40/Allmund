@@ -18,12 +18,14 @@
     <ClInclude Include="src\Allmund\Core.h" />
     <ClInclude Include="src\Allmund\EntryPoint.h" />
     <ClInclude Include="src\Allmund\Window.h" />
+    <ClInclude Include="src\Allmund\Graphics\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Allmund\Engine.cpp" />
     <ClCompile Include="src\Allmund\Log.cpp" />
     <ClCompile Include="src\Allmund\Application.cpp" />
     <ClCompile Include="src\Allmund\Window.cpp" />
+    <ClCompile Include="src\Allmund\Graphics\VertexBuffer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -75,6 +77,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Allmund\vendor\spdlog\include;$(SolutionDir)Allmund\vendor\GLFW\include;$(SolutionDir)Allmund\vendor\GLEW\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy /Y  "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\$(ProjectName).dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\"</Command>
