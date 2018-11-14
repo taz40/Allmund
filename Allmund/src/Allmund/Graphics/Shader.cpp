@@ -1,6 +1,9 @@
 #include "Shader.h"
 #include "../Log.h"
 #include <GL/glew.h>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 namespace Allmund::Graphics::OPENGL {
 
@@ -45,7 +48,29 @@ namespace Allmund::Graphics::OPENGL {
 	Shader::Shader(const std::string& path)
 	{
 		this->path = path;
-		shader_id = createShader("#version 330 core\nlayout(location = 0) in vec4 position;\nvoid main(){\ngl_Position = position;\n}","#version 330 core\nlayout(location = 0) out vec4 color;\nvoid main(){\ncolor = vec4(1.0, 0.0, 0.0, 1.0);\n}");
+		AM_CORE_TRACE("Creating shader from file: {0}", path);
+		std::ifstream stream(path);
+
+		enum class ShaderType {
+			NONE = -1, VERTEX = 0, FRAGMENT = 1
+		};
+
+		std::string line;
+		std::stringstream ss[2];
+		ShaderType type = ShaderType::NONE;
+		while (getline(stream, line)) {
+			if (line.find("#shader") != std::string::npos) {
+				if (line.find("vertex") != std::string::npos) {
+					type = ShaderType::VERTEX;
+				}else if (line.find("fragment") != std::string::npos) {
+					type = ShaderType::FRAGMENT;
+				}
+			} else {
+				ss[(int)type] << line << '\n';
+			}
+		}
+
+		shader_id = createShader(ss[(int)ShaderType::VERTEX].str(), ss[(int)ShaderType::FRAGMENT].str());
 	}
 
 

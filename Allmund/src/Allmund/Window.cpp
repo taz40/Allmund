@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "Log.h"
 #include "Graphics/VertexBuffer.h"
+#include "Graphics/IndexBuffer.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -31,7 +32,7 @@ namespace Allmund {
 				AM_CORE_FATAL("GLEW Failed to initialize. Error = {0}", glewGetErrorString(err));
 				return;
 			}
-			shader = new OPENGL::Shader("");
+			shader = new OPENGL::Shader("res/shaders/Basic.shader");
 		}
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);
@@ -45,15 +46,17 @@ namespace Allmund {
 
 	void Window::Update() {
 		if (Allmund::renderAPI == RenderAPI::OpenGL) {
-
-			OPENGL::Vertex verts[3] = { -0.5f, -0.5f, 0.0f, 0.5f, 0.5f, -0.5f };
-			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 3);
+			OPENGL::Vertex verts[4] = { 0.5f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f };
+			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 4);
+			unsigned int indecies[6] = { 0, 1, 3, 1, 2, 3 };
+			OPENGL::IndexBuffer* Ibuffer = new OPENGL::IndexBuffer(indecies, 6);
 			shader->Bind();
 			/* Render here */
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			buffer->Bind();
-			glDrawArrays(GL_TRIANGLES, 0, 3);
+			Ibuffer->Bind();
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
