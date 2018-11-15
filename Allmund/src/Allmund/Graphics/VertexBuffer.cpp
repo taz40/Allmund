@@ -9,12 +9,16 @@ namespace Allmund::Graphics::OPENGL {
 	VertexBuffer::VertexBuffer(Vertex* data, unsigned int count)
 	{
 		GLCall(glGenBuffers(1, &buffer_id));
-		Bind();
+		GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer_id));
 		GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * count, data, GL_STATIC_DRAW));
+
+		GLCall(glGenVertexArrays(1, &vertex_array_id));
+		GLCall(glBindVertexArray(vertex_array_id));
 
 		GLCall(glEnableVertexAttribArray(0));
 		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
-		Unbind();
+		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+		GLCall(glBindVertexArray(0));
 	}
 
 
@@ -24,11 +28,11 @@ namespace Allmund::Graphics::OPENGL {
 	}
 
 	void VertexBuffer::Bind() {
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer_id));
+		GLCall(glBindVertexArray(vertex_array_id));
 	}
 
 	void VertexBuffer::Unbind() {
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+		GLCall(glBindVertexArray(0));
 	}
 
 }

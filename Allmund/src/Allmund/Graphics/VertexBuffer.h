@@ -12,6 +12,7 @@ namespace Allmund::Graphics::OPENGL {
 	{
 	private:
 		unsigned int buffer_id;
+		unsigned int vertex_array_id;
 	public:
 		VertexBuffer(Vertex* data, unsigned int count);
 		~VertexBuffer();
