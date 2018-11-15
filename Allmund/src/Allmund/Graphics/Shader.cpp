@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include "../Log.h"
+#include "OpenGL.h"
 #include <GL/glew.h>
 #include <fstream>
 #include <string>
@@ -10,19 +11,19 @@ namespace Allmund::Graphics::OPENGL {
 	unsigned int Shader::compileShader(unsigned int type, const std::string& source) {
 		unsigned int id = glCreateShader(type);
 		const char* src = source.c_str();
-		glShaderSource(id, 1, &src, nullptr);
-		glCompileShader(id);
+		GLCall(glShaderSource(id, 1, &src, nullptr));
+		GLCall(glCompileShader(id));
 
 		int result;
-		glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+		GLCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
 		if (result == GL_FALSE) {
 			int length;
-			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+			GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
 			char* message = (char*)alloca(length * sizeof(char));
-			glGetShaderInfoLog(id, length, &length, message);
+			GLCall(glGetShaderInfoLog(id, length, &length, message));
 			AM_CORE_ERROR("{0} shader failed to compile.", (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment"));
 			AM_CORE_ERROR(message);
-			glDeleteShader(id);
+			GLCall(glDeleteShader(id));
 			return 0;
 		}
 
@@ -30,17 +31,17 @@ namespace Allmund::Graphics::OPENGL {
 	}
 
 	unsigned int Shader::createShader(const std::string& vertexShader, const std::string& fragmentShader) {
-		unsigned int program = glCreateProgram();
+		GLCall(unsigned int program = glCreateProgram());
 		unsigned int vertShader = compileShader(GL_VERTEX_SHADER, vertexShader);
 		unsigned int fragShader = compileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
-		glAttachShader(program, vertShader);
-		glAttachShader(program, fragShader);
-		glLinkProgram(program);
-		glValidateProgram(program);
+		GLCall(glAttachShader(program, vertShader));
+		GLCall(glAttachShader(program, fragShader));
+		GLCall(glLinkProgram(program));
+		GLCall(glValidateProgram(program));
 
-		glDeleteShader(vertShader);
-		glDeleteShader(fragShader);
+		GLCall(glDeleteShader(vertShader));
+		GLCall(glDeleteShader(fragShader));
 
 		return program;
 	}
@@ -74,16 +75,16 @@ namespace Allmund::Graphics::OPENGL {
 	}
 
 
-	Shader::~Shader()
-	{
+	Shader::~Shader(){
+		GLCall(glDeleteProgram(shader_id));
 	}
 
 	void Shader::Bind() {
-		glUseProgram(shader_id);
+		GLCall(glUseProgram(shader_id));
 	}
 
 	void Shader::Unbind() {
-		glUseProgram(0);
+		GLCall(glUseProgram(0));
 	}
 
 }

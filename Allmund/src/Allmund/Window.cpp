@@ -53,13 +53,11 @@ namespace Allmund {
 			OPENGL::IndexBuffer* Ibuffer = new OPENGL::IndexBuffer(indecies, 6);
 			shader->Bind();
 			/* Render here */
-			glClear(GL_COLOR_BUFFER_BIT);
+			GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
 			buffer->Bind();
 			Ibuffer->Bind();
-			OPENGL::GLClearError();
-			glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr);
-			OPENGL::GLCheckError();
+			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 

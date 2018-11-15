@@ -1,15 +1,11 @@
 ﻿  Window.cpp
-d:\dev\allmund\allmund\src\allmund\graphics\shader.h(12): warning C4251: 'Allmund::Graphics::OPENGL::Shader::path': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Allmund::Graphics::OPENGL::Shader'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-d:\dev\allmund\allmund\src\allmund\log.h(20): warning C4251: 'Allmund::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
-  d:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
-d:\dev\allmund\allmund\src\allmund\log.h(21): warning C4251: 'Allmund::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
-  d:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
-d:\dev\allmund\allmund\vendor\glfw\include\glfw\glfw3.h(789): warning C4099: 'GLFWwindow': type name first seen using 'class' now seen using 'struct'
-  d:\dev\allmund\allmund\src\allmund\window.h(5): note: see declaration of 'GLFWwindow'
-     Creating library D:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.lib and object D:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.exp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'D:\Dev\Allmund\bin\Debug-x64\Allmund\vc120.pdb'; linking object as if no debug info
-  Allmund.vcxproj -> D:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.dll
+c:\dev\allmund\allmund\src\allmund\graphics\shader.h(12): warning C4251: 'Allmund::Graphics::OPENGL::Shader::path': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Allmund::Graphics::OPENGL::Shader'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.15.26726\include\xstring(4373): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+c:\dev\allmund\allmund\src\allmund\log.h(20): warning C4251: 'Allmund::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
+  c:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
+c:\dev\allmund\allmund\src\allmund\log.h(21): warning C4251: 'Allmund::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
+  c:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
+c:\dev\allmund\allmund\vendor\glfw\include\glfw\glfw3.h(789): warning C4099: 'GLFWwindow': type name first seen using 'class' now seen using 'struct'
+  c:\dev\allmund\allmund\src\allmund\window.h(5): note: see declaration of 'GLFWwindow'
+  Allmund.vcxproj -> C:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.dll
           1 file(s) copied.
