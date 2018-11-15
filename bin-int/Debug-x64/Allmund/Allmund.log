@@ -1,7 +1,12 @@
-﻿  VertexBuffer.cpp
-c:\dev\allmund\allmund\src\allmund\log.h(20): warning C4251: 'Allmund::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
-  c:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
-c:\dev\allmund\allmund\src\allmund\log.h(21): warning C4251: 'Allmund::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
-  c:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
-  Allmund.vcxproj -> C:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.dll
+﻿  Window.cpp
+d:\dev\allmund\allmund\src\allmund\graphics\shader.h(12): warning C4251: 'Allmund::Graphics::OPENGL::Shader::path': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Allmund::Graphics::OPENGL::Shader'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+d:\dev\allmund\allmund\src\allmund\log.h(20): warning C4251: 'Allmund::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
+  d:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
+d:\dev\allmund\allmund\src\allmund\log.h(21): warning C4251: 'Allmund::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
+  d:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
+d:\dev\allmund\allmund\vendor\glfw\include\glfw\glfw3.h(789): warning C4099: 'GLFWwindow': type name first seen using 'class' now seen using 'struct'
+  d:\dev\allmund\allmund\src\allmund\window.h(5): note: see declaration of 'GLFWwindow'
+d:\dev\allmund\allmund\src\allmund\window.cpp(60): warning C4305: 'argument': truncation from 'double' to 'float'
+  Allmund.vcxproj -> D:\Dev\Allmund\bin\Debug-x64\Allmund\Allmund.dll
           1 file(s) copied.
