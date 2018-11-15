@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Allmund\Graphics\IndexBuffer.h" />
+    <ClInclude Include="src\Allmund\Graphics\OpenGL.h" />
     <ClInclude Include="src\Allmund\Graphics\Shader.h" />
     <ClInclude Include="src\Allmund\Engine.h" />
     <ClInclude Include="src\Allmund\Log.h" />
@@ -24,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Allmund\Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="src\Allmund\Graphics\OpenGL.cpp" />
     <ClCompile Include="src\Allmund\Graphics\Shader.cpp" />
     <ClCompile Include="src\Allmund\Engine.cpp" />
     <ClCompile Include="src\Allmund\Log.cpp" />

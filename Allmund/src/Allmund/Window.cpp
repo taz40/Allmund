@@ -5,6 +5,7 @@
 #include "Graphics/IndexBuffer.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Graphics/OpenGL.h"
 
 using namespace Allmund::Graphics;
 
@@ -56,8 +57,9 @@ namespace Allmund {
 
 			buffer->Bind();
 			Ibuffer->Bind();
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-
+			OPENGL::GLClearError();
+			glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr);
+			OPENGL::GLCheckError();
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 
