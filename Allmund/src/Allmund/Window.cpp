@@ -57,6 +57,7 @@ namespace Allmund {
 
 			buffer->Bind();
 			Ibuffer->Bind();
+			shader->SetUniform4f("u_Color", 0.2, 0.3, 0.8, 1.0);
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
