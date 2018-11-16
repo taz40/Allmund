@@ -16,7 +16,7 @@ namespace Allmund::Graphics::OPENGL {
 		GLCall(glBindVertexArray(vertex_array_id));
 
 		GLCall(glEnableVertexAttribArray(0));
-		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+		GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0));
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 		GLCall(glBindVertexArray(0));
 	}

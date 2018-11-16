@@ -774,6 +774,9 @@
     <ClInclude Include="src\Allmund\Graphics\Uniform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Allmund\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Allmund\Application.cpp">
@@ -807,6 +810,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Allmund\Graphics\Uniform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Allmund\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

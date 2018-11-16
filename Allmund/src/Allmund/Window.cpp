@@ -7,6 +7,8 @@
 #include <GLFW/glfw3.h>
 #include "Graphics/OpenGL.h"
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "Transform.h"
 
 using namespace Allmund::Graphics;
 
@@ -36,9 +38,11 @@ namespace Allmund {
 			}
 			OPENGL::Shader* shader = new OPENGL::Shader("res/shaders/Basic.shader");
 			material = new Material(shader);
-			material->SetUniform4f("u_Color", glm::vec4(1.0,0.0,0.0,1.0));
+			material->SetUniform4f("u_Color", glm::vec4(1.0,1.0,0.0,1.0));
 			material2 = new Material(shader);
-			material2->SetUniform4f("u_Color", glm::vec4(0.0,1.0,0.0,1.0));
+			material2->SetUniform4f("u_Color", glm::vec4(0.2,0.3,0.8,1.0));
+			GLCall(glEnable(GL_DEPTH_TEST));
+			GLCall(glDepthFunc(GL_LESS));
 		}
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);
@@ -52,17 +56,36 @@ namespace Allmund {
 
 	void Window::Update() {
 		if (Allmund::renderAPI == RenderAPI::OpenGL) {
-			OPENGL::Vertex verts[4] = { 0.5f, 0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f };
-			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 4);
-			unsigned int indecies[6] = { 0, 1, 3, 1, 2, 3 };
-			OPENGL::IndexBuffer* Ibuffer = new OPENGL::IndexBuffer(indecies, 6);
+			OPENGL::Vertex verts[8] = { {0.5f, 0.5f, 0.5f}, {0.5f, 0.5f, -0.5f}, {-0.5f, 0.5f, -0.5f}, {-0.5f, 0.5f, 0.5f}, {-0.5f, -0.5f, 0.5f}, {0.5f, -0.5f, 0.5f}, {0.5f, -0.5f, -0.5f}, {-0.5f, -0.5f, -0.5f} };
+			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 8);
+			unsigned int indecies[12 * 3] = { 0,4,3, 0, 5, 4, 3,4,7, 2, 3, 7, 1, 7, 6, 1, 2, 7, 5, 6, 7, 7, 4, 5, 2, 1, 0, 0, 3, 2, 5, 0, 1, 1, 6, 5 };
+			OPENGL::IndexBuffer* Ibuffer = new OPENGL::IndexBuffer(indecies, 12 * 3);
+			glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 4.0f/3.0f, 1.0f, 100.0f);//glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+			Transform transform;
+			transform.pos = glm::vec3(-1.5f, 0.0f, -5.0f);
+			transform.rot = glm::vec3(45,rotX,0);
+			rotX += 1.0f;
+			transform.scale = glm::vec3(1.0f, 1.0f, 1.0f);
+			material->SetUniformMat4("u_MV", transform.getTransformMatrix());
+			material->SetUniformMat4("u_Projection", proj);
 			material->Bind();
 			/* Render here */
-			GLCall(glClear(GL_COLOR_BUFFER_BIT));
+			GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
 			buffer->Bind();
 			Ibuffer->Bind();
-			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+			GLCall(glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, nullptr));
+			material->Unbind();
+
+			Transform transform2;
+			transform2.pos = glm::vec3(1.5f, 0.0f, -5.0f);
+			transform2.rot = glm::vec3(45, -rotX, 0);
+			transform2.scale = glm::vec3(1.0f, 1.0f, 1.0f);
+			material2->SetUniformMat4("u_MV", transform2.getTransformMatrix());
+			material2->SetUniformMat4("u_Projection", proj);
+			material2->Bind();
+			GLCall(glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, nullptr));
+
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 

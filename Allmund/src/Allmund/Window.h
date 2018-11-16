@@ -13,6 +13,7 @@ namespace Allmund {
 		GLFWwindow* window;
 		Graphics::Material* material;
 		Graphics::Material* material2;
+		float rotX;
 	public:
 		Window(int width, int height, const char * title);
 		~Window();

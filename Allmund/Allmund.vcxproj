@@ -24,6 +24,7 @@
     <ClInclude Include="src\Allmund\Window.h" />
     <ClInclude Include="src\Allmund\Graphics\VertexBuffer.h" />
     <ClInclude Include="src\Allmund\Graphics\Uniform.h" />
+    <ClInclude Include="src\Allmund\Transform.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_vector_relational.hpp" />
@@ -276,6 +277,7 @@
     <ClCompile Include="src\Allmund\Application.cpp" />
     <ClCompile Include="src\Allmund\Window.cpp" />
     <ClCompile Include="src\Allmund\Graphics\VertexBuffer.cpp" />
+    <ClCompile Include="src\Allmund\Transform.cpp" />
     <ClCompile Include="vendor\glm\glm\detail\glm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -459,7 +461,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Allmund\vendor\glm;$(SolutionDir)Allmund\vendor\spdlog\include;$(SolutionDir)Allmund\vendor\GLFW\include;$(SolutionDir)Allmund\vendor\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -479,7 +481,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>AM_RELEASE_BUILD;GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLM_ENABLE_EXPERIMENTAL;AM_RELEASE_BUILD;GLEW_STATIC;AM_BUILD_DLL;AM_PLATFORM_WINDOWS;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)Allmund\vendor\glm;$(SolutionDir)Allmund\vendor\spdlog\include;$(SolutionDir)Allmund\vendor\GLFW\include;$(SolutionDir)Allmund\vendor\GLEW\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>

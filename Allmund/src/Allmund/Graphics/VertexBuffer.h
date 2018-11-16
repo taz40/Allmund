@@ -6,6 +6,7 @@ namespace Allmund::Graphics::OPENGL {
 	struct ALLMUND_API Vertex {
 		float x;
 		float y;
+		float z;
 	};
 
 	class ALLMUND_API VertexBuffer
