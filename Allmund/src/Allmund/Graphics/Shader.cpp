@@ -88,12 +88,63 @@ namespace Allmund::Graphics::OPENGL {
 	}
 	
 
-	void Shader::SetUniform4f(std::string name, float f1, float f2, float f3, float f4) {
-		GLCall(glUniform4f(glGetUniformLocation(shader_id, name.c_str()), f1, f2, f3, f4));
+	void Shader::SetUniform1i(std::string name, int i) {
+		GLCall(glUniform1i(glGetUniformLocation(shader_id, name.c_str()), i));
+	}
+
+	void Shader::SetUniform1f(std::string name, float f) {
+		GLCall(glUniform1f(glGetUniformLocation(shader_id, name.c_str()), f));
+	}
+
+	void Shader::SetUniform2f(std::string name, glm::vec2 vec) {
+		GLCall(glUniform2f(glGetUniformLocation(shader_id, name.c_str()), vec.x, vec.y));
+	}
+
+	void Shader::SetUniform3f(std::string name, glm::vec3 vec) {
+		GLCall(glUniform3f(glGetUniformLocation(shader_id, name.c_str()), vec.x, vec.y, vec.z));
+	}
+
+	void Shader::SetUniform4f(std::string name, glm::vec4 vec) {
+		GLCall(glUniform4f(glGetUniformLocation(shader_id, name.c_str()), vec.x, vec.y, vec.z, vec.w));
+	}
+
+	void Shader::SetUniformMat4(std::string name, glm::mat4 mat) {
+		GLCall(glUniformMatrix4fv(glGetUniformLocation(shader_id, name.c_str()), 1, GL_FALSE, &mat[0][0]));
+	}
+
+	void Shader::SetUniform1i(int location, int i) {
+		GLCall(glUniform1i(location, i));
+	}
+
+	void Shader::SetUniform1f(int location, float f) {
+		GLCall(glUniform1f(location, f));
+	}
+
+	void Shader::SetUniform2f(int location, glm::vec2 vec) {
+		GLCall(glUniform2f(location, vec.x, vec.y));
+	}
+
+	void Shader::SetUniform3f(int location, glm::vec3 vec) {
+		GLCall(glUniform3f(location, vec.x, vec.y, vec.z));
+	}
+
+	void Shader::SetUniform4f(int location, glm::vec4 vec) {
+		GLCall(glUniform4f(location, vec.x, vec.y, vec.z, vec.w));
+	}
+
+	void Shader::SetUniformMat4(int location, glm::mat4 mat) {
+		GLCall(glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]));
 	}
 
 	int Shader::getUniformLocation(std::string name) {
 		GLCall(return glGetUniformLocation(shader_id, name.c_str()));
 	}
+
+	unsigned int Shader::getUniformCount() {
+		int num;
+		GLCall(glGetProgramiv(shader_id, GL_ACTIVE_UNIFORMS, &num));
+		return num;
+	}
+
 
 }

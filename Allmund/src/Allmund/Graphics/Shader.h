@@ -1,6 +1,7 @@
 #pragma once
 #include "../Core.h"
 #include <iostream>
+#include <glm/glm.hpp>
 
 namespace Allmund::Graphics::OPENGL {
 
@@ -20,7 +21,22 @@ namespace Allmund::Graphics::OPENGL {
 
 		int getUniformLocation(std::string name);
 
-		void SetUniform4f(std::string name, float f1, float f2, float f3, float f4);
+		void SetUniform1i(std::string name, int i);
+		void SetUniform1f(std::string name, float f);
+		void SetUniform2f(std::string name, glm::vec2 vec);
+		void SetUniform3f(std::string name, glm::vec3 vec);
+		void SetUniform4f(std::string name, glm::vec4 vec);
+		void SetUniformMat4(std::string name, glm::mat4 mat);
+
+		void SetUniform1i(int location, int i);
+		void SetUniform1f(int location, float f);
+		void SetUniform2f(int location, glm::vec2 vec);
+		void SetUniform3f(int location, glm::vec3 vec);
+		void SetUniform4f(int location, glm::vec4 vec);
+		void SetUniformMat4(int location, glm::mat4 mat);
+
+		unsigned int getUniformCount();
+
 	};
 
 }	

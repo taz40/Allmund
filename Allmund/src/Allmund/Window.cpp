@@ -6,6 +6,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Graphics/OpenGL.h"
+#include <glm/glm.hpp>
 
 using namespace Allmund::Graphics;
 
@@ -33,11 +34,11 @@ namespace Allmund {
 				AM_CORE_FATAL("GLEW Failed to initialize. Error = {0}", glewGetErrorString(err));
 				return;
 			}
-			shader = new OPENGL::Shader("res/shaders/Basic.shader");
-			AM_CORE_INFO("u_color: {0}\ntest: {1}\ntest2: {2}\ntest3: {3}", shader->getUniformLocation("u_Color"), shader->getUniformLocation("test"), shader->getUniformLocation("test2"), shader->getUniformLocation("test3"));
-			int num;
-			glGetProgramiv(shader->shader_id, GL_ACTIVE_UNIFORMS, &num);
-			AM_CORE_INFO("Active uniform count: {0}", num);
+			OPENGL::Shader* shader = new OPENGL::Shader("res/shaders/Basic.shader");
+			material = new Material(shader);
+			material->SetUniform4f("u_Color", glm::vec4(1.0,0.0,0.0,1.0));
+			material2 = new Material(shader);
+			material2->SetUniform4f("u_Color", glm::vec4(0.0,1.0,0.0,1.0));
 		}
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);
@@ -55,13 +56,12 @@ namespace Allmund {
 			OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 4);
 			unsigned int indecies[6] = { 0, 1, 3, 1, 2, 3 };
 			OPENGL::IndexBuffer* Ibuffer = new OPENGL::IndexBuffer(indecies, 6);
-			shader->Bind();
+			material->Bind();
 			/* Render here */
 			GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
 			buffer->Bind();
 			Ibuffer->Bind();
-			shader->SetUniform4f("u_Color", 0.2, 0.3, 0.8, 1.0);
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);

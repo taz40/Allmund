@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Graphics/Shader.h"
+#include "Graphics/Material.h"
 
 class GLFWwindow;
 
@@ -10,7 +11,8 @@ namespace Allmund {
 	{
 	private:
 		GLFWwindow* window;
-		Graphics::OPENGL::Shader* shader;
+		Graphics::Material* material;
+		Graphics::Material* material2;
 	public:
 		Window(int width, int height, const char * title);
 		~Window();
