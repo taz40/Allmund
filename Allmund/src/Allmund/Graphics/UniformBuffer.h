@@ -1,5 +1,5 @@
 #pragma once
-#include "Core.h"
+#include "../Core.h"
 
 namespace Allmund::Graphics::OPENGL {
 
@@ -7,7 +7,7 @@ namespace Allmund::Graphics::OPENGL {
 	private:
 		unsigned int buffer_id;
 	public:
-		UniformBuffer();
+		UniformBuffer(const void* data, unsigned int size);
 		~UniformBuffer();
 
 		void Bind();

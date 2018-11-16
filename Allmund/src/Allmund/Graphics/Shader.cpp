@@ -86,10 +86,14 @@ namespace Allmund::Graphics::OPENGL {
 	void Shader::Unbind() {
 		GLCall(glUseProgram(0));
 	}
-
+	
 
 	void Shader::SetUniform4f(std::string name, float f1, float f2, float f3, float f4) {
 		GLCall(glUniform4f(glGetUniformLocation(shader_id, name.c_str()), f1, f2, f3, f4));
+	}
+
+	int Shader::getUniformLocation(std::string name) {
+		GLCall(return glGetUniformLocation(shader_id, name.c_str()));
 	}
 
 }

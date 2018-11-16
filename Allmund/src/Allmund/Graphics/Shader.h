@@ -18,6 +18,8 @@ namespace Allmund::Graphics::OPENGL {
 		void Bind();
 		void Unbind();
 
+		int getUniformLocation(std::string name);
+
 		void SetUniform4f(std::string name, float f1, float f2, float f3, float f4);
 	};
 

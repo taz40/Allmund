@@ -34,6 +34,10 @@ namespace Allmund {
 				return;
 			}
 			shader = new OPENGL::Shader("res/shaders/Basic.shader");
+			AM_CORE_INFO("u_color: {0}\ntest: {1}\ntest2: {2}\ntest3: {3}", shader->getUniformLocation("u_Color"), shader->getUniformLocation("test"), shader->getUniformLocation("test2"), shader->getUniformLocation("test3"));
+			int num;
+			glGetProgramiv(shader->shader_id, GL_ACTIVE_UNIFORMS, &num);
+			AM_CORE_INFO("Active uniform count: {0}", num);
 		}
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);

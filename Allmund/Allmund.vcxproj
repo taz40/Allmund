@@ -23,7 +23,6 @@
     <ClInclude Include="src\Allmund\EntryPoint.h" />
     <ClInclude Include="src\Allmund\Window.h" />
     <ClInclude Include="src\Allmund\Graphics\VertexBuffer.h" />
-    <ClInclude Include="src\Allmund\Graphics\UniformBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Allmund\Graphics\Material.cpp" />
@@ -35,7 +34,6 @@
     <ClCompile Include="src\Allmund\Application.cpp" />
     <ClCompile Include="src\Allmund\Window.cpp" />
     <ClCompile Include="src\Allmund\Graphics\VertexBuffer.cpp" />
-    <ClCompile Include="src\Allmund\Graphics\UniformBuffer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
