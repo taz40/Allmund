@@ -13,4 +13,8 @@ namespace Allmund {
 	{
 	}
 
+	void Actor::Update() {
+		
+	}
+
 }

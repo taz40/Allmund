@@ -1,9 +1,10 @@
 #pragma once
+#include "Core.h"
 #include <glm/glm.hpp>
 
 namespace Allmund {
 
-	class Transform
+	class ALLMUND_API Transform
 	{
 	public:
 		Transform();
@@ -14,6 +15,8 @@ namespace Allmund {
 		glm::vec3 pos;
 		glm::vec3 rot;
 		glm::vec3 scale;
+
+		Transform* parent;
 
 	};
 

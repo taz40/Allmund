@@ -15,7 +15,7 @@ class Sandbox : public Application {
 
 public:
 	Sandbox()
-	: Application(800, 600, "Test"){
+	: Application(800, 600, "Sandbox"){
 		AM_TRACE("Sandbox initialized");
 
 		Graphics::OPENGL::Shader* shader = new Graphics::OPENGL::Shader("res/shaders/Basic.shader");
@@ -26,12 +26,13 @@ public:
 
 		Actor* a = new SandboxActor();
 		Actor* a2 = new SandboxActor();
+		Actor* a3 = new Actor();
 		Camera* c = new Camera();
-		c->transform->pos.y = 3;
-		c->transform->pos.x = 6;
-		c->transform->pos.z = -5;
+		c->transform->pos.y = 5;
+		//c->transform->pos.x = 6;
+		//c->transform->pos.z = -5;
 		c->transform->rot.x = -45;
-		c->transform->rot.y = 90;
+		//c->transform->rot.y = 90;
 		Graphics::OPENGL::Vertex verts[8] = { { 0.5f, 0.5f, 0.5f },{ 0.5f, 0.5f, -0.5f },{ -0.5f, 0.5f, -0.5f },{ -0.5f, 0.5f, 0.5f },{ -0.5f, -0.5f, 0.5f },{ 0.5f, -0.5f, 0.5f },{ 0.5f, -0.5f, -0.5f },{ -0.5f, -0.5f, -0.5f } };
 		//OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 8);
 		unsigned int indecies[12 * 3] = { 0,4,3, 0, 5, 4, 3,4,7, 2, 3, 7, 1, 7, 6, 1, 2, 7, 5, 6, 7, 7, 4, 5, 2, 1, 0, 0, 3, 2, 5, 0, 1, 1, 6, 5 };
@@ -43,9 +44,13 @@ public:
 		a->transform->pos = glm::vec3(-1.5f, 0.0f, -5.0f);
 		a->transform->rot = glm::vec3(0, 45, 0);
 		a->transform->scale = glm::vec3(2.0f, 1.0f, 1.0f);
+		a->transform->parent = a3->transform;
 		a2->transform->pos = glm::vec3(1.5f, 0.0f, -5.0f);
 		a2->transform->rot = glm::vec3(0, -45, 0);
 		a2->transform->scale = glm::vec3(1.0f, 2.0f, 1.0f);
+		a2->transform->parent = a3->transform;
+		a3->transform->pos.x = 1;
+		a3->transform->rot.x = 0;
 
 		Scene* s = new Scene();
 

@@ -17,7 +17,7 @@ namespace Allmund {
 		Actor();
 		~Actor();
 
-		virtual void Update() = 0;
+		virtual void Update();
 	};
 
 }
