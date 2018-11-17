@@ -11,6 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Allmund\Graphics\OpenGLRenderer.h" />
+    <ClInclude Include="src\Allmund\Camera.h" />
+    <ClInclude Include="src\Allmund\Scene.h" />
+    <ClInclude Include="src\Allmund\Actor.h" />
+    <ClInclude Include="src\Allmund\Graphics\Model.h" />
     <ClInclude Include="src\Allmund\Graphics\Material.h" />
     <ClInclude Include="src\Allmund\Graphics\IndexBuffer.h" />
     <ClInclude Include="src\Allmund\Graphics\OpenGL.h" />
@@ -267,6 +272,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Allmund\Graphics\OpenGLRenderer.cpp" />
+    <ClCompile Include="src\Allmund\Camera.cpp" />
+    <ClCompile Include="src\Allmund\Scene.cpp" />
+    <ClCompile Include="src\Allmund\Actor.cpp" />
+    <ClCompile Include="src\Allmund\Graphics\Model.cpp" />
     <ClCompile Include="src\Allmund\Graphics\Material.cpp" />
     <ClCompile Include="src\Allmund\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="src\Allmund\Graphics\OpenGL.cpp" />

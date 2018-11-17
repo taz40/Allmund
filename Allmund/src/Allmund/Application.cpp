@@ -21,4 +21,8 @@ namespace Allmund {
 		}
 	}
 
+	void Application::loadScene(Scene* scene) {
+		window->scene = scene;
+	}
+
 }

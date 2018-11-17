@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "Graphics/Shader.h"
 #include "Graphics/Material.h"
+#include "Graphics/OpenGLRenderer.h"
 
 class GLFWwindow;
 
@@ -11,10 +12,9 @@ namespace Allmund {
 	{
 	private:
 		GLFWwindow* window;
-		Graphics::Material* material;
-		Graphics::Material* material2;
-		float rotX;
+		Graphics::OPENGL::OpenGLRenderer* rendererGL;
 	public:
+		Scene * scene;
 		Window(int width, int height, const char * title);
 		~Window();
 

@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Window.h"
+#include "Scene.h"
 
 namespace Allmund {
 
@@ -12,6 +13,8 @@ namespace Allmund {
 	public:
 		Application(int width, int height, const char * title);
 		virtual ~Application();
+
+		void loadScene(Scene* scene);
 
 		void Run();
 	};

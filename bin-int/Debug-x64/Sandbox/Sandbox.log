@@ -1,6 +1,16 @@
 ﻿  SandboxApp.cpp
 d:\dev\allmund\allmund\src\allmund\graphics\shader.h(13): warning C4251: 'Allmund::Graphics::OPENGL::Shader::path': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Allmund::Graphics::OPENGL::Shader'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(4347): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+d:\dev\allmund\allmund\src\allmund\scene.h(10): warning C4251: 'Allmund::Scene::actors': class 'std::vector<Allmund::Actor *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'Allmund::Scene'
+          with
+          [
+              _Ty=Allmund::Actor *
+          ]
+  d:\dev\allmund\allmund\src\allmund\scene.h(10): note: see declaration of 'std::vector<Allmund::Actor *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Allmund::Actor *
+          ]
 d:\dev\allmund\allmund\src\allmund\log.h(20): warning C4251: 'Allmund::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'
   d:\dev\allmund\allmund\vendor\spdlog\include\spdlog\logger.h(146): note: see declaration of 'std::shared_ptr<spdlog::logger>'
 d:\dev\allmund\allmund\src\allmund\log.h(21): warning C4251: 'Allmund::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Allmund::Log'

@@ -19,7 +19,7 @@ namespace Allmund {
 	glm::mat4 Transform::getTransformMatrix() {
 		//glm::mat4 rotation = glm::rotate(rot.x, glm::vec3(1.0, 0.0, 0.0));
 		//rotation *= glm::rotate(rot.y, glm::vec3())
-		return glm::translate(pos) * glm::eulerAngleXYZ(glm::radians(rot.x), glm::radians(rot.y), glm::radians(rot.z)) * glm::scale(scale);
+		return glm::translate(pos) * glm::eulerAngleYXZ(glm::radians(rot.y), glm::radians(rot.x), glm::radians(rot.z)) * glm::scale(scale);
 	}
 
 }
