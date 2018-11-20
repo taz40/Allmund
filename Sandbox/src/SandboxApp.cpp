@@ -20,9 +20,9 @@ public:
 
 		Graphics::OPENGL::Shader* shader = new Graphics::OPENGL::Shader("res/shaders/Basic.shader");
 		Graphics::Material* material = new Graphics::Material(shader);
-		material->SetUniform4f("u_Color", glm::vec4(1.0, 1.0, 0.0, 1.0));
+		material->SetUniform3f("u_Color", glm::vec3(1.0, 1.0, 0.0));
 		Graphics::Material* material2 = new Graphics::Material(shader);
-		material2->SetUniform4f("u_Color", glm::vec4(0.2, 0.3, 0.8, 1.0));
+		material2->SetUniform3f("u_Color", glm::vec3(0.2, 0.3, 0.8));
 
 		Actor* a = new SandboxActor();
 		Actor* a2 = new SandboxActor();
@@ -33,10 +33,48 @@ public:
 		//c->transform->pos.z = -5;
 		c->transform->rot.x = -45;
 		//c->transform->rot.y = 90;
-		Graphics::OPENGL::Vertex verts[8] = { { 0.5f, 0.5f, 0.5f },{ 0.5f, 0.5f, -0.5f },{ -0.5f, 0.5f, -0.5f },{ -0.5f, 0.5f, 0.5f },{ -0.5f, -0.5f, 0.5f },{ 0.5f, -0.5f, 0.5f },{ 0.5f, -0.5f, -0.5f },{ -0.5f, -0.5f, -0.5f } };
+		Graphics::OPENGL::Vertex verts[24] = { 
+		{ 0.5f, 0.5f, 0.5f, 0, 1, 0 },
+		{ 0.5f, 0.5f, -0.5f, 0, 1, 0 },
+		{ -0.5f, 0.5f, -0.5f, 0, 1, 0 },
+		{ -0.5f, 0.5f, 0.5f, 0, 1, 0}, //top
+		
+		{ 0.5f, -0.5f, 0.5f, 0, -1, 0 },
+		{ 0.5f, -0.5f, -0.5f, 0, -1, 0 },
+		{ -0.5f, -0.5f, -0.5f, 0, -1, 0 },
+		{ -0.5f, -0.5f, 0.5f, 0, -1, 0}, //bottom
+
+		{-0.5f, 0.5f, -0.5f, 0, 0, -1},
+		{ -0.5f, -0.5f, -0.5f, 0, 0, -1 },
+		{ 0.5f, -0.5f, -0.5f, 0, 0, -1 },
+		{ 0.5f, 0.5f, -0.5f, 0, 0, -1 },//front
+		
+		{-0.5f, 0.5f, 0.5f, 0, 0, 1},
+		{ -0.5f, -0.5f, 0.5f, 0, 0, 1 },
+		{ 0.5f, -0.5f, 0.5f, 0, 0, 1 },
+		{ 0.5f, 0.5f, 0.5f, 0, 0, 1 },//back
+
+		{ -0.5f, 0.5f, -0.5f, -1, 0, 0 },
+		{ -0.5f, 0.5f, 0.5f, -1, 0, 0 },
+		{ -0.5f, -0.5f, 0.5f, -1, 0, 0 },
+		{ -0.5f, -0.5f, -0.5f, -1, 0, 0 },//left
+
+		{ 0.5f, 0.5f, -0.5f, 1, 0, 0 },
+		{ 0.5f, 0.5f, 0.5f, 1, 0, 0 },
+		{ 0.5f, -0.5f, 0.5f, 1, 0, 0 },
+		{ 0.5f, -0.5f, -0.5f, 1, 0, 0 }//right
+		
+		};
 		//OPENGL::VertexBuffer* buffer = new OPENGL::VertexBuffer(verts, 8);
-		unsigned int indecies[12 * 3] = { 0,4,3, 0, 5, 4, 3,4,7, 2, 3, 7, 1, 7, 6, 1, 2, 7, 5, 6, 7, 7, 4, 5, 2, 1, 0, 0, 3, 2, 5, 0, 1, 1, 6, 5 };
-		Graphics::Model* model = new Graphics::Model(verts, 8, indecies, 12 * 3);
+		unsigned int indecies[12 * 3] = { 
+			0, 1, 2, 2, 3, 0, //top
+			4, 5, 6, 6, 7, 4, //bottom
+			8, 9, 10, 10, 11, 8, //back
+			12, 13, 14, 14, 15, 12, //front
+			16, 17, 18, 18, 19, 16, // left
+			20, 21, 22, 22, 23, 20 //right
+		};
+		Graphics::Model* model = new Graphics::Model(verts,24, indecies, 12 * 3);
 		a->model = model;
 		a2->model = model;
 		a->material = material;

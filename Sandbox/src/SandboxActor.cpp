@@ -11,6 +11,6 @@ SandboxActor::~SandboxActor()
 {
 }
 
-void SandboxActor::Update() {
-	transform->rot.y += 1;
+void SandboxActor::Update(float deltaTime) {
+	transform->rot.y += 30.0f * deltaTime;
 }

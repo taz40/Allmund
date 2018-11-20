@@ -7,6 +7,6 @@ public:
 	SandboxActor();
 	~SandboxActor();
 
-	void Update();
+	void Update(float deltaTime);
 };
 

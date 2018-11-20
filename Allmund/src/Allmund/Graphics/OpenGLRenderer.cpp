@@ -46,7 +46,10 @@ namespace Allmund::Graphics::OPENGL {
 				Projection = glm::perspective(camera->FOV, 4.0f/3.0f, camera->NearPlain, camera->FarPlain);
 			}
 			mat->SetUniformMat4("u_Projection", Projection);
-			mat->SetUniformMat4("u_MV", camera->getViewMatrix() * a->transform->getTransformMatrix());
+			mat->SetUniformMat4("u_Model", a->transform->getTransformMatrix());
+			mat->SetUniformMat4("u_View", camera->getViewMatrix());
+			mat->SetUniform3f("u_ViewPos", camera->transform->pos);
+			mat->SetUniform3f("u_LightPos", glm::vec3(-1,0,0));
 			a->model->Bind();
 			mat->Bind();
 			GLCall(glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, nullptr));

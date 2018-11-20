@@ -47,6 +47,7 @@ namespace Allmund {
 		else {
 			AM_CORE_FATAL("Render API unsuported, cannot create window.\nRender API = {0}", Allmund::renderAPI);
 		}
+		last = std::chrono::high_resolution_clock::now();
 	}
 
 
@@ -63,9 +64,12 @@ namespace Allmund {
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 		}
+		std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+		float deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(now - last).count();
 		for (int i = 0; i < scene->actors.size(); i++) {
-			scene->actors[i]->Update();
+			scene->actors[i]->Update(deltaTime);
 		}
+		last = std::chrono::high_resolution_clock::now();
 	}
 
 	bool Window::IsClosing() {

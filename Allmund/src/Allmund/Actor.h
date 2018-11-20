@@ -17,7 +17,7 @@ namespace Allmund {
 		Actor();
 		~Actor();
 
-		virtual void Update();
+		virtual void Update(float deltaTime);
 	};
 
 }

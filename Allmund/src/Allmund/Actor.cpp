@@ -13,7 +13,7 @@ namespace Allmund {
 	{
 	}
 
-	void Actor::Update() {
+	void Actor::Update(float deltaTime) {
 		
 	}
 
