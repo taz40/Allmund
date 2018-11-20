@@ -49,7 +49,7 @@ namespace Allmund::Graphics::OPENGL {
 			mat->SetUniformMat4("u_Model", a->transform->getTransformMatrix());
 			mat->SetUniformMat4("u_View", camera->getViewMatrix());
 			mat->SetUniform3f("u_ViewPos", camera->transform->pos);
-			mat->SetUniform3f("u_LightPos", glm::vec3(-1,0,0));
+			mat->SetUniform3f("u_LightPos", glm::vec3(-2,2,-6));
 			a->model->Bind();
 			mat->Bind();
 			GLCall(glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_INT, nullptr));

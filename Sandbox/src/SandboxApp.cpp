@@ -28,10 +28,10 @@ public:
 		Actor* a2 = new SandboxActor();
 		Actor* a3 = new Actor();
 		Camera* c = new Camera();
-		c->transform->pos.y = 5;
+		c->transform->pos.y = 3;
 		//c->transform->pos.x = 6;
 		//c->transform->pos.z = -5;
-		c->transform->rot.x = -45;
+		c->transform->rot.x = -30;
 		//c->transform->rot.y = 90;
 		Graphics::OPENGL::Vertex verts[24] = { 
 		{ 0.5f, 0.5f, 0.5f, 0, 1, 0 },
@@ -79,11 +79,11 @@ public:
 		a2->model = model;
 		a->material = material;
 		a2->material = material2;
-		a->transform->pos = glm::vec3(-1.5f, 0.0f, -5.0f);
+		a->transform->pos = glm::vec3(-1.5f, 0.0f, -3.0f);
 		a->transform->rot = glm::vec3(0, 45, 0);
 		a->transform->scale = glm::vec3(2.0f, 1.0f, 1.0f);
 		a->transform->parent = a3->transform;
-		a2->transform->pos = glm::vec3(1.5f, 0.0f, -5.0f);
+		a2->transform->pos = glm::vec3(1.5f, 0.0f, -3.0f);
 		a2->transform->rot = glm::vec3(0, -45, 0);
 		a2->transform->scale = glm::vec3(1.0f, 2.0f, 1.0f);
 		a2->transform->parent = a3->transform;
