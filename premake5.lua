@@ -51,6 +51,8 @@ project "Allmund"
 		staticruntime "On"
 		systemversion "10.0.17134.0"
 
+		buildoptions {"/sdl", "/MDd", "/permissive-"}
+
 		defines{
 			"GLEW_STATIC",
 			"AM_BUILD_DLL",
@@ -105,6 +107,8 @@ project "Sandbox"
 		cppdialect "c++17"
 		staticruntime "On"
 		systemversion "10.0.17134.0"
+
+		buildoptions {"/sdl", "/MDd", "/permissive-"}
 
 		defines{
 			"GLEW_STATIC",

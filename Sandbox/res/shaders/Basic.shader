@@ -53,6 +53,6 @@ void main() {
 
 	//final
 	vec3 result = (diffuse + ambient + specular) * u_Color;
-	//result = specular + ambient;
+	//result = ambient;
 	color = vec4(result, 1.0); 
 }
